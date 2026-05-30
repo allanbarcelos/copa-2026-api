@@ -257,19 +257,6 @@ echo -e "  ${DIM}Exemplo: https://copa2026.com.br${NC}"
 echo ""
 ask "ALLOWED_ORIGIN" "http://localhost:5174" ALLOWED_ORIGIN
 
-# ── GHCR ───────────────────────────────────────────────────────────────────────
-echo ""
-sep
-echo -e "  ${BLD}GitHub Container Registry${NC}"
-sep
-echo -e "  ${DIM}Credenciais para baixar a imagem ${APP_IMAGE}${NC}"
-echo -e "  ${DIM}Gere um PAT em: GitHub → Settings → Developer Settings → Personal access tokens${NC}"
-echo -e "  ${DIM}Escopo mínimo necessário: read:packages${NC}"
-echo ""
-ask "Usuário GitHub" "" GHCR_USER
-ask "GitHub PAT (Personal Access Token)" "" GHCR_PAT
-ok "Credenciais GHCR configuradas."
-
 # ── Resumo + confirmação ───────────────────────────────────────────────────────
 echo ""
 sep
@@ -489,10 +476,6 @@ ok "Stack file: ${STACK_FILE}"
 # FASE 8 — DEPLOY DO STACK
 # ==============================================================================
 phase "FASE 8 — Deploy do stack"
-
-info "Autenticando no GitHub Container Registry (ghcr.io)..."
-echo "$GHCR_PAT" | docker login ghcr.io -u "$GHCR_USER" --password-stdin
-ok "Login no ghcr.io realizado."
 
 info "Baixando imagem ${APP_IMAGE}..."
 docker pull "$APP_IMAGE"
