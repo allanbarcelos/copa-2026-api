@@ -439,7 +439,7 @@ services:
     networks:
       - copa2026_net
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost:${APP_PORT}/health >/dev/null 2>&1 || exit 1"]
+      test: ["CMD-SHELL", "node -e \"require('http').get('http://localhost:${APP_PORT}/health', r => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))\""]
       interval: 30s
       timeout: 5s
       retries: 3
