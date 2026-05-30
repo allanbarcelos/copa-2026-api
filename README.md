@@ -1,5 +1,8 @@
 # Copa 2026 API
 
+[![GitHub](https://img.shields.io/badge/GitHub-copa--2026--api-181717?logo=github)](https://github.com/allanbarcelos/copa-2026-api)
+[![Frontend Repo](https://img.shields.io/badge/GitHub-copa--2026-181717?logo=github)](https://github.com/allanbarcelos/copa-2026)
+
 API em tempo real para acompanhamento da Copa do Mundo 2026. Agrega dados de partidas e previsões de duas fontes externas e os distribui via WebSocket (Socket.IO) para clientes conectados.
 
 ## Visão geral
@@ -139,3 +142,9 @@ git push origin v1.0.0
 ## Licença
 
 MIT
+
+---
+
+Projeto open source — contribuições e feedbacks são bem-vindos.
+
+Aceito apoio para novos projetos ☕ [Buy me a coffee](https://www.buymeacoffee.com/allanbarcelos)
