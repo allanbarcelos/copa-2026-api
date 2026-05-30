@@ -1,0 +1,16 @@
+services:
+  api:
+    build: .
+    ports:
+      - "3001:3001"
+    environment:
+      PORT: 3001
+      FOOTBALL_DATA_API_KEY: ${FOOTBALL_DATA_API_KEY}
+      API_FOOTBALL_KEY: ${API_FOOTBALL_KEY:-}
+      ALLOWED_ORIGIN: ${ALLOWED_ORIGIN:-http://localhost:5174}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
