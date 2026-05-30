@@ -15,6 +15,7 @@ const API_BASE  = 'https://v3.football.api-sports.io'
 const LEAGUE_ID = 1      // FIFA World Cup
 const SEASON    = 2026
 const POLL_MS   = 60 * 60 * 1_000   // 1 hora
+const DAYS_AHEAD = 14
 
 function isoDate(date) {
   return date.toISOString().slice(0, 10)
@@ -34,7 +35,7 @@ async function apiFetch(path, apiKey) {
 async function poll(io, apiKey) {
   try {
     const today = isoDate(new Date())
-    const in7   = isoDate(new Date(Date.now() + 7 * 86_400_000))
+    const in7   = isoDate(new Date(Date.now() + DAYS_AHEAD * 86_400_000))
 
     // 1. Fixtures agendados nos próximos 7 dias
     const fixturesData = await apiFetch(
