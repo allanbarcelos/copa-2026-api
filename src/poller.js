@@ -16,8 +16,8 @@ const POLL_MS     = 6_000   // 10 req/min
 function fingerprint(data) {
   if (!data?.matches) return ''
   return data.matches
-    .filter(m => m.status === 'FINISHED')
-    .map(m => `${m.id}:${m.score?.fullTime?.home}-${m.score?.fullTime?.away}`)
+    .filter(m => ['FINISHED', 'IN_PLAY', 'PAUSED'].includes(m.status))
+    .map(m => `${m.id}:${m.status}:${m.score?.fullTime?.home}-${m.score?.fullTime?.away}`)
     .join('|')
 }
 
